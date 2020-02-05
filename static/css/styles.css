@@ -1,0 +1,9 @@
+.btn:focus, .btn:active:focus, .btn.active:focus,
+.btn.focus, .btn:active.focus, .btn.active.focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.alert-status {
+    margin: 7.5vh 25vh 7.5vh;
+}

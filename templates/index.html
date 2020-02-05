@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <title>Fumaz | Status</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="shortcut icon" type="image/png" href="../static/assets/favicon.png">
 </head>
-<body>
+<body class="bg-light" style="display: flex; flex-direction: column; height: 100%;">
 
+<div style="flex: 1 0 auto;">
+    {% include 'headers/default.html' %}
+
+    {% include 'alerts/status.html' %}
+
+    {% include 'cards/accordion.html' %}
+</div>
+
+<footer class="footer" style="flex-shrink: 0;">
+    <div class="container-fluid text-center" style="padding: 1vh 0 3vh; margin: 0;">
+        <span class="text-muted">Made by <a href="https://fumaz.dev">fumaz.dev</a>, all rights reserved. </span>
+    </div>
+</footer>
+
+<script src="../static/js/app.js"></script>
+<script src="https://kit.fontawesome.com/29da107a8d.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 </html>
