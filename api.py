@@ -20,9 +20,6 @@ def request(url, params):
         'cache-control': 'no-cache'
     }
 
-    print(payload)
-    print(url)
-    print(url + payload)
     response = requests.request("POST", url, data=payload, headers=headers)
 
     return response.text

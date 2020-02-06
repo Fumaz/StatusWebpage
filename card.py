@@ -27,6 +27,11 @@ class Card:
 class Subcard:
     def __init__(self, name: str, monitor: Monitor, uptime_ratio: str = "100.00", status="System operational.",
                  status_color="success"):
+        if len(uptime_ratio.split('.', 2)[1]) > 2:
+            uptime_ratio = uptime_ratio.replace(uptime_ratio.split('.', 2)[1], uptime_ratio.split('.', 2)[1][:2])
+
+        uptime_ratio = uptime_ratio + "%"
+
         self.name = name
         self.status = status
         self.status_color = status_color

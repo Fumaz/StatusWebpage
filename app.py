@@ -21,9 +21,9 @@ def get_monitors():
 
 def get_status_name(status):
     if status == 2 or status == 0:
-        return "Operational."
+        return "Operational"
     else:
-        return "Offline."
+        return "Offline"
 
 
 def get_status_color(status):
@@ -44,7 +44,7 @@ def get_status(monitors):
 
 
 def get_cards(monitors):
-    cards = [Card('System node'), Card('Health node')]
+    cards = [Card('System node'), Card('Services node')]
     for subcard in monitors['cards']:
         if subcard.name == 'Main server node':
             cards[0].subcards.append(subcard)

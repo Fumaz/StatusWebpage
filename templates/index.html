@@ -13,18 +13,19 @@
 <div style="flex: 1 0 auto;">
     {% include 'headers/default.html' %}
 
-    {% include 'alerts/status.html' %}
+    <div class="container-fluid" style="margin-inside: 0 5% 0; width: 100%;">
+        {% include 'alerts/status.html' %}
 
-    {% include 'cards/accordion.html' %}
+        {% include 'cards/accordion.html' %}
+    </div>
 </div>
 
 <footer class="footer" style="flex-shrink: 0;">
-    <div class="container-fluid text-center" style="padding: 1vh 0 3vh; margin: 0;">
+    <div class="container-fluid text-center" style="padding: 1% 0 2.5%; margin: 0;">
         <span class="text-muted">Made by <a href="https://fumaz.dev">fumaz.dev</a>, all rights reserved. </span>
     </div>
 </footer>
 
-<script src="../static/js/app.js"></script>
 <script src="https://kit.fontawesome.com/29da107a8d.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -35,5 +36,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<script src="../static/js/app.js"></script>
 </body>
 </html>

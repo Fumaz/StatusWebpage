@@ -1,9 +1,10 @@
 <li class="list-group-item">
-    <div class="d-flex justify-content-between align-items-center" style="margin: 2.5vh 0;">
+    <div class="d-flex justify-content-between align-items-center" style="margin: 0.5% 0;">
         <div class="container-fluid">
-            <h6 style="margin: 0 0 1vh;">{{ subcard.name }}</h6>
-            <p style="margin: 0;">Uptime ratio: {{ subcard.uptime_ratio }}%</p>
+            <h6 style="margin: 0 0 0.5%;">{{ subcard.name }}</h6>
+            <p style="margin: 0;">Uptime ratio: <span
+                    style="color: {{ subcard.status_c2 }}">{{ subcard.uptime_ratio }}</span></p>
         </div>
-        <p style="color: {{ subcard.status_c2 }}; font-size: 0.90em; margin: 0;">{{ subcard.status }}</p>
+        <p style="color: {{ subcard.status_c2 }}; font-size: 0.80em; margin: 0;">{{ subcard.status }}</p>
     </div>
 </li>
