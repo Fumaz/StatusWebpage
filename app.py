@@ -6,6 +6,15 @@ import api
 from card import Status, Monitor, Subcard, Card
 
 app = Flask(__name__)
+categories = (
+    ('System Node', '| SYS'),
+    ('Services Node', '| SERVICE'),
+    ('Bots Node', '| BOT'),
+    ('Userbots Node', '| USERBOT'),
+    ('Web Node', '| WEB'),
+    ('Database Node', '| DB'),
+    ('Misc Node', '')
+)
 
 
 def get_monitors():
@@ -13,9 +22,13 @@ def get_monitors():
     monitors = {'status': result['stat'], 'cards': []}
     for monitor in result['monitors']:
         mon = Monitor(monitor['id'], monitor['friendly_name'], monitor['url'])
-        sub = Subcard(mon.name, mon, monitor['all_time_uptime_ratio'], get_status_name(monitor['status']),
+        sub = Subcard(mon.name, mon,
+                      monitor.get('all_time_uptime_ratio', monitor.get('custom_uptime_ratio')),
+                      get_status_name(monitor['status']),
                       get_status_color(monitor['status']))
-        monitors['cards'].append(sub)
+
+        if sub.name.strip():
+            monitors['cards'].append(sub)
     return monitors
 
 
@@ -35,7 +48,7 @@ def get_status_color(status):
 
 def get_status(monitors):
     if monitors['status'] == 'ok':
-        if (card.status_color == 'success' for card in monitors['cards']):
+        if all(card.status_color == 'success' for card in monitors['cards']):
             return Status('success', 'All systems are online and operational.')
         else:
             return Status('warning', 'Some systems are undergoing problems.')
@@ -44,15 +57,16 @@ def get_status(monitors):
 
 
 def get_cards(monitors):
-    cards = [Card('System node'), Card('Services node')]
+    cards = [Card(name=name, suffix=suffix) for name, suffix in categories]
     for subcard in monitors['cards']:
-        if subcard.name == 'Main server node':
-            cards[0].subcards.append(subcard)
-        else:
-            cards[1].subcards.append(subcard)
+        for card in cards:
+            if card.should(subcard.name):
+                subcard.name = subcard.name[:-len(card.suffix)]
+                card.subcards.append(subcard)
+                break
 
     for card in cards:
-        success = (subcard.status == 'success' for subcard in card.subcards)
+        success = all(subcard.status == 'Operational' for subcard in card.subcards)
         if success:
             card.status = 'All systems are online and operational.'
             card.status_color = 'success'
@@ -60,14 +74,17 @@ def get_cards(monitors):
             card.status = 'Some systems are undergoing problems.'
             card.status_color = 'warning'
 
+        card.update()
+
     return cards
 
 
 @app.route('/')
-def hello_world():
+def display():
     monitors = get_monitors()
     cards = get_cards(monitors)
     status = get_status(monitors)
+
     return render_template('index.html', status=status, cards=cards)
 
 

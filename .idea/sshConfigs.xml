@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="vps" id="31218abf-9677-4471-957a-20b3f3fffaf2" keyPath="$USER_HOME$/.ssh/id_rsa" port="22" customName="web" nameFormat="CUSTOM" username="web">
+        <option name="customName" value="web" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

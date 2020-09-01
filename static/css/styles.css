@@ -5,6 +5,12 @@
 }
 
 .alert-status {
-    margin: 2.5% auto 2.5%;
-    max-width: 960px;
+    margin: 3% auto 3%;
+    max-width: 850px;
+}
+
+.alert-success {
+    border-color: #19B99A;
+    background: #20A286;
+    color: #fff;
 }

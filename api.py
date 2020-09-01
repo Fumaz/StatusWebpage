@@ -37,6 +37,6 @@ def get_account():
 def get_monitors(state=None):
     url = urlify("getMonitors")
     params = {'statuses': state} if state is not None else {}
-    params['all_time_uptime_ratio'] = '1'
+    params['custom_uptime_ratios'] = '30'
 
     return request(url, params)

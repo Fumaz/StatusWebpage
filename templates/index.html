@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="shortcut icon" type="image/png" href="../static/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../static/assets/fumaz.png">
 </head>
-<body class="bg-light" style="display: flex; flex-direction: column; height: 100%;">
+<body class="bg-light" style="margin: 0; min-height: 100vh; position: relative;">
 
-<div style="flex: 1 0 auto;">
+<div>
     {% include 'headers/default.html' %}
 
     <div class="container-fluid" style="margin-inside: 0 5% 0; width: 100%;">
@@ -20,8 +20,9 @@
     </div>
 </div>
 
-<footer class="footer" style="flex-shrink: 0;">
-    <div class="container-fluid text-center" style="padding: 1% 0 2.5%; margin: 0;">
+<footer class="footer" style="position: absolute; bottom: 0; width: 100%; padding-top: 3%; padding-bottom: 1%;">
+    <div class="container-fluid text-center" style="margin: 0;">
+        <hr>
         <span class="text-muted">Made by <a href="https://fumaz.dev">fumaz.dev</a>, all rights reserved. </span>
     </div>
 </footer>

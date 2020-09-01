@@ -6,7 +6,7 @@ class Monitor:
 
 
 class Card:
-    def __init__(self, name: str, subcards: [] = None, status=None, status_color=None):
+    def __init__(self, name: str, suffix: str, subcards: list = None, status=None, status_color=None):
         if subcards is None:
             subcards = []
 
@@ -17,11 +17,18 @@ class Card:
             status_color = "success"
 
         self.name = name
+        self.suffix = suffix
         self.subcards = subcards
         self.status = status
         self.status_color = status_color
         self.friendly_name = name.split(' ')[0]
         self.status_c2 = '#7ED321' if status_color == 'success' else 'red'
+
+    def should(self, name: str) -> bool:
+        return name.lower().endswith(self.suffix.lower())
+
+    def update(self):
+        self.status_c2 = '#7ED321' if self.status_color == 'success' else '#FFBD55'
 
 
 class Subcard:
