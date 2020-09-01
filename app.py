@@ -66,6 +66,10 @@ def get_cards(monitors):
                 break
 
     for card in cards:
+        if len(card.subcards) < 1:
+            cards.remove(card)
+            continue
+
         success = all(subcard.status == 'Operational' for subcard in card.subcards)
         if success:
             card.status = 'All systems are online and operational.'
