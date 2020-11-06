@@ -1,8 +1,8 @@
 import json
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request, abort
 
-import api
+import uptimeapi
 from card import Status, Monitor, Subcard, Card
 
 app = Flask(__name__)
@@ -17,8 +17,22 @@ categories = (
 )
 
 
+def get_api_monitors():
+    result = json.loads(uptimeapi.get_monitors())
+    data = {'status': result['stat'], 'monitors': []}
+
+    for monitor in result['monitors']:
+        data['monitors'].append({'id': monitor['id'],
+                                 'name': monitor['friendly_name'],
+                                 'url': monitor['url'],
+                                 'uptime': monitor.get('all_time_uptime_ratio', monitor.get('custom_uptime_ratio')),
+                                 'status': monitor['status']})
+
+    return data
+
+
 def get_monitors():
-    result = json.loads(api.get_monitors())
+    result = json.loads(uptimeapi.get_monitors())
     monitors = {'status': result['stat'], 'cards': []}
     for monitor in result['monitors']:
         mon = Monitor(monitor['id'], monitor['friendly_name'], monitor['url'])
@@ -90,6 +104,16 @@ def display():
     status = get_status(monitors)
 
     return render_template('index.html', status=status, cards=cards)
+
+
+@app.route('/api/getMonitors')
+def api():
+    if request.args.get('api_key', '') != '3Qyc2x7RF6WkjzaqVQiAC76z9rx':
+        return abort(403)
+
+    monitors = get_api_monitors()
+
+    return jsonify(**monitors)
 
 
 if __name__ == '__main__':
