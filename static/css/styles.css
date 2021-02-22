@@ -4,6 +4,29 @@
     box-shadow: none;
 }
 
+body {
+    background-color: rgb(24, 26, 27);
+    color: rgb(209, 205, 199);
+}
+
+.card {
+    background-color: rgb(24, 26, 27);
+    border-color: rgba(140, 130, 115, 0.13);
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom-color: rgba(140, 130, 115, 0.13);
+}
+
+.list-group * {
+    background-color: rgb(24, 26, 27);
+}
+
+.btn {
+    color: rgb(209, 205, 199);
+}
+
 .alert-status {
     margin: 3% auto 3%;
     max-width: 850px;
