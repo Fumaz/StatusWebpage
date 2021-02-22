@@ -1,5 +1,9 @@
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+window.addEventListener("load", function () {
+    // Toggles tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 });
 
 $card = $('.card');
