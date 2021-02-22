@@ -1,3 +1,27 @@
+def get_status_name(status):
+    if status == 2 or status == 0:
+        return "Operational"
+    else:
+        return "Offline"
+
+
+def get_status_color(status):
+    if status == 2 or status == 0:
+        return "success"
+    else:
+        return "danger"
+
+
+def get_status(monitors):
+    if monitors['status'] == 'ok':
+        if all(card.status_color == 'success' for card in monitors['cards']):
+            return Status('success', 'All systems are online and operational.')
+        else:
+            return Status('warning', 'Some systems are undergoing problems.')
+    else:
+        return Status('danger', 'All systems are undergoing problems.')
+
+
 class Monitor:
     def __init__(self, monitor_id, name, url):
         self.monitor_id = monitor_id
@@ -24,7 +48,7 @@ class Card:
         self.friendly_name = name.split(' ')[0]
         self.status_c2 = '#7ED321' if status_color == 'success' else 'red'
 
-    def should(self, name: str) -> bool:
+    def should_contain(self, name: str) -> bool:
         return name.lower().endswith(self.suffix.lower())
 
     def update(self):

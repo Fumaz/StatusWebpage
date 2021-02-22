@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  nginx_net:
+    external:
+      name: nginx_net
+
+services:
+  status_web:
+    image: fumaz/status-web
+    container_name: "status_web"
+    build: .
+    working_dir: /usr/src/app
+    volumes:
+      - ./src:/usr/src/app
+    restart: unless-stopped
+    command: python3 app.py
+    networks:
+      - nginx_net
