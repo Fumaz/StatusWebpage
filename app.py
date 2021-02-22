@@ -13,7 +13,7 @@ categories = (
     ('Userbots Node', '| USERBOT'),
     ('Web Node', '| WEB'),
     ('Database Node', '| DB'),
-    ('Minecraft Node', '| MC')
+    ('Minecraft Node', '| MC'),
     ('Misc Node', '')
 )
 
